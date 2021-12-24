@@ -15,11 +15,20 @@ const MessageForm = (props) => {
 
     const handleSubmit=(event)=>{
         event.preventDefault();
-        const text=value.trim();
-
+        const {msgfield}= event.target.elements;
+        const text=msgfield.value.trim();
         if(text.length>0){
-            sendMessage(creds,chatId,text)
-         
+            sendMessage(creds,chatId,{text:text,sender_username:'suk'});
+            setTimeout(() => {
+                const div = document.getElementById("chatWindow");
+                // div.scrollTop = div.scrollHeight - div.clientHeight;
+                div.scrollTo({
+                    top: div.scrollHeight,
+                    left: 0,
+                    behavior: 'smooth'
+                });
+            }, 1000);
+            
         }
         setValue(" ");
            
@@ -34,8 +43,10 @@ const MessageForm = (props) => {
            <input
            className='message-input'
            placeholder='send a message...'
+           name='msgfield'
+           value={value}
            onChange={handleChange}
-           onSubmit={handleSubmit}/>
+           />
 
            <label htmlFor='upload-button'>
                <span className='image-button'>
