@@ -5,6 +5,7 @@ import TheirMessage from './theirMessage'
 
 const ChatFeed = (props) => {
    const {chats,activeChat,userName, messages} =props; //Destructuring from props
+   console.log(userName)
    const chat= chats && chats[activeChat];
    
 
@@ -33,7 +34,7 @@ const ChatFeed = (props) => {
                <div key={`msg_${index}`} style={{width:'100%'}}>
                    <div className='message-block'>
                        {isMymessage?
-                       <MyMessage message={messages}/>
+                       <MyMessage message={message}/>
                        :<TheirMessage message={messages} lastMessage={messages[lastMessageKey]}/>}
                        
                     </div>
@@ -48,7 +49,7 @@ const ChatFeed = (props) => {
    if (!chat) return <div />;
    
    return (
-        <div className='chat-feed'>
+        <div className='chat-feed' id="chatWindow">
             <div className='chat-title-container'>
                 <div  className='chat-title'>{chat?.title}</div>
                 <div className='chat-subtitle'>
