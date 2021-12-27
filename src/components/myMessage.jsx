@@ -14,7 +14,7 @@ const MyMessage = ({message}) => {
         )
     }
     return (
-        <div className='message' style={{width:'100%',float:'right', marginRight:'18px', color:'black', backgroundColor: 'white' }}>
+        <div className='message' style={{width:'100%',float:'right', marginRight:'18px', color:'white', backgroundColor: '#3B2A50' }}>
             {message.text}
         </div>
     )
